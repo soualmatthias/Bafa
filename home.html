@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background with Centered Spritesheet Animation</title>
+    <style>
+        /* Fullscreen background styling */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('space.jpg'); /* Replace with your background image */
+            background-size: cover; /* Cover the entire screen */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat;
+            image-rendering: pixelated; /* Ensure pixel-perfect rendering for the background */
+        }
+
+        /* Container for the animation */
+        .animation-container {
+            width: 200px;
+            height: 200px;
+            image-rendering: pixelated;  /* Ensure pixel-perfect rendering */
+            overflow: hidden;  /* Hide any overflow */
+            position: relative;
+        }
+
+        /* The actual spritesheet */
+        .spritesheet {
+            width: 10000px; /* 50 frames * 200px width */
+            height: 4000px; /* 20 frames * 200px height */
+            background-image: url('planet.png'); /* Replace with your spritesheet */
+            background-position: 0 0;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<div class="animation-container">
+    <div class="spritesheet" id="sprite"></div>
+</div>
+<div>
+    <h1>Hello</h1>
+</div>
+
+<script>
+    const sprite = document.getElementById('sprite');
+    const frameWidth = 200;  // Width of each frame
+    const frameHeight = 200; // Height of each frame
+    const totalColumns = 50; // Total columns in the spritesheet
+    const totalRows = 20;    // Total rows in the spritesheet
+    const totalFrames = totalColumns * totalRows; // Total number of frames (1000 frames)
+    const fps = 10;          // Frames per second for animation
+    let currentFrame = 0;
+
+    function animateSprite() {
+        const column = currentFrame % totalColumns;
+        const row = Math.floor(currentFrame / totalColumns);
+        const xOffset = -column * frameWidth;
+        const yOffset = -row * frameHeight;
+
+        // Move the background position to show the correct frame
+        sprite.style.backgroundPosition = `${xOffset}px ${yOffset}px`;
+
+        // Move to the next frame
+        currentFrame = (currentFrame + 1) % totalFrames;
+    }
+
+    // Start the animation with setInterval based on FPS
+    setInterval(animateSprite, 1000 / fps);
+</script>
+
+</body>
+</html>
