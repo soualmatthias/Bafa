@@ -28,6 +28,7 @@
             overflow: hidden;  /* Hide any overflow */
             position: relative;
             background: none;  /* No background for the container */
+            
         }
 
         /* The actual spritesheet */
@@ -40,26 +41,51 @@
             position: absolute;
             background-color: transparent; /* Ensure transparent background */
         }
+
+        .text-container {
+            text-align: center;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            background-color:darkblue;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .row {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
     </style>
 </head>
 <body>
-
-<div class="animation-container">
-    <div class="spritesheet" id="sprite"></div>
+<div class="row">
+    <div class="text-container">
+        <h1>Invitation</h1>
+        <p>Vous avez été sélectionné pour participer à la première mission civile déployée par la NASA.</p>
+        <p>Cependant, avant de pouvoir vous envoyer dans l'espace, nous devons nous assurer que vous êtes capable de vous occuper du véhicule en cas de problème.</p>
+        <p>Pour cela, nous vous ferons passer un test le 30 février 2025, dans la salle J. Berge, au 2 avenue Yves Brumeux, dans la ville de l'Espace, en France. J'espère que vous serez à la hauteur.</p>
+        <p>Thomas Pesquet</p>
+    </div>
+    <div>
+        <div class="animation-container">
+            <div class="spritesheet" id="sprite"></div>
+        </div>
+    </div>
 </div>
 
-<div>
-    <h1>Hello</h1>
-</div>
+
+
+
 
 <script>
     const sprite = document.getElementById('sprite');
-    const frameWidth = 200;  // Width of each frame
-    const frameHeight = 200; // Height of each frame
-    const totalColumns = 50; // Total columns in the spritesheet
-    const totalRows = 20;    // Total rows in the spritesheet
-    const totalFrames = totalColumns * totalRows; // Total number of frames (1000 frames)
-    const fps = 30;          // Frames per second for animation
+    const frameWidth = 200;
+    const frameHeight = 200;
+    const totalColumns = 50;
+    const totalRows = 20;
+    const totalFrames = totalColumns * totalRows;
+    const fps = 30;
     let currentFrame = 0;
 
     function animateSprite() {
@@ -67,9 +93,7 @@
         const row = Math.floor(currentFrame / totalColumns);
         const xOffset = -column * frameWidth;
         const yOffset = -row * frameHeight;
-
         sprite.style.backgroundPosition = `${xOffset}px ${yOffset}px`;
-
         currentFrame = (currentFrame + 1) % totalFrames;
     }
 
