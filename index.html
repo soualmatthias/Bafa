@@ -16,6 +16,7 @@
             background-size: cover; /* Cover the entire screen */
             background-position: center; /* Center the background image */
             background-repeat: no-repeat;
+            background-attachment: fixed; /* Prevent background splitting on zoom */
             image-rendering: pixelated; /* Ensure pixel-perfect rendering for the background */
         }
 
@@ -26,6 +27,7 @@
             image-rendering: pixelated;  /* Ensure pixel-perfect rendering */
             overflow: hidden;  /* Hide any overflow */
             position: relative;
+            background: none;  /* No background for the container */
         }
 
         /* The actual spritesheet */
@@ -34,7 +36,9 @@
             height: 4000px; /* 20 frames * 200px height */
             background-image: url('planet.png'); /* Replace with your spritesheet */
             background-position: 0 0;
+            background-repeat: no-repeat; /* Prevent repeating of spritesheet */
             position: absolute;
+            background-color: transparent; /* Ensure transparent background */
         }
     </style>
 </head>
@@ -43,6 +47,7 @@
 <div class="animation-container">
     <div class="spritesheet" id="sprite"></div>
 </div>
+
 <div>
     <h1>Hello</h1>
 </div>
