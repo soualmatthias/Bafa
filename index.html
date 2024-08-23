@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Background with Centered Spritesheet Animation</title>
     <style>
-        /* Fullscreen background styling */
         html, body {
             margin: 0;
             padding: 0;
@@ -55,7 +54,7 @@
     const totalColumns = 50; // Total columns in the spritesheet
     const totalRows = 20;    // Total rows in the spritesheet
     const totalFrames = totalColumns * totalRows; // Total number of frames (1000 frames)
-    const fps = 10;          // Frames per second for animation
+    const fps = 30;          // Frames per second for animation
     let currentFrame = 0;
 
     function animateSprite() {
@@ -64,14 +63,11 @@
         const xOffset = -column * frameWidth;
         const yOffset = -row * frameHeight;
 
-        // Move the background position to show the correct frame
         sprite.style.backgroundPosition = `${xOffset}px ${yOffset}px`;
 
-        // Move to the next frame
         currentFrame = (currentFrame + 1) % totalFrames;
     }
 
-    // Start the animation with setInterval based on FPS
     setInterval(animateSprite, 1000 / fps);
 </script>
 
